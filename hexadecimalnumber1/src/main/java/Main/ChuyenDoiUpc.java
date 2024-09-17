@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -16,16 +17,23 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -43,6 +51,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
     private Map<String, String[]> skuDataMap = new HashMap<>();
     private File fileImport;
     private Map<String, String[]> fileDataImport = new HashMap<>();
+    private List<String> listNameOfFile = new ArrayList<String>();
     /**
      * Creates new form ChuyenDoiUpc
      */
@@ -110,6 +119,24 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
         btn_Style = new javax.swing.JRadioButton();
         btn_Item = new javax.swing.JRadioButton();
         btn_QRcode = new javax.swing.JRadioButton();
+        txt_des = new javax.swing.JTextField();
+        txt_barcode = new javax.swing.JTextField();
+        txt_vsn = new javax.swing.JTextField();
+        txt_Catgory = new javax.swing.JTextField();
+        txt_size = new javax.swing.JTextField();
+        txt_style = new javax.swing.JTextField();
+        txt_price = new javax.swing.JTextField();
+        txt_text_1 = new javax.swing.JTextField();
+        txt_text3 = new javax.swing.JTextField();
+        txt_item = new javax.swing.JTextField();
+        txt_qr_code = new javax.swing.JTextField();
+        txt_part_no = new javax.swing.JTextField();
+        txt_stock_number = new javax.swing.JTextField();
+        txt_color = new javax.swing.JTextField();
+        txt_material = new javax.swing.JTextField();
+        txt_made_in = new javax.swing.JTextField();
+        txt_text2 = new javax.swing.JTextField();
+        txt_text4 = new javax.swing.JTextField();
         cbo_nguoi_tao_du_lieu = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -132,6 +159,32 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cbo_may = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        txt_head = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txt_key = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txt_tdl_serial = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txt_tdlc_qty = new javax.swing.JTextField();
+        btn_tdlc_run = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        btn_chuyen_do_Hex = new javax.swing.JButton();
+        txt_chuen_doi_hex = new javax.swing.JTextField();
+        btn_run_chuyen_doi_hex = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        btn_dsd_import = new javax.swing.JButton();
+        txt_dsd_import = new javax.swing.JTextField();
+        btn_dsd_run = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txa_dsd = new javax.swing.JTextArea();
+        jLabel25 = new javax.swing.JLabel();
+        txt_name_folder = new javax.swing.JTextField();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -238,7 +291,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4))
                         .addGap(37, 37, 37)
-                        .addGroup(frame_ManualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(frame_ManualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(frame_ManualLayout.createSequentialGroup()
                                 .addGroup(frame_ManualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(cbo_partition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +303,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                                     .addComponent(txt_qty, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                                     .addComponent(txt_upc, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_serial))
-                                .addGap(100, 100, 100)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_run))))
                     .addGroup(frame_ManualLayout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -443,22 +496,74 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
             }
         });
 
+        txt_des.setEditable(false);
+
+        txt_barcode.setEditable(false);
+
+        txt_vsn.setEditable(false);
+
+        txt_Catgory.setEditable(false);
+
+        txt_size.setEditable(false);
+
+        txt_style.setEditable(false);
+
+        txt_price.setEditable(false);
+
+        txt_item.setEditable(false);
+
+        txt_qr_code.setEditable(false);
+
+        txt_part_no.setEditable(false);
+
+        txt_stock_number.setEditable(false);
+
+        txt_color.setEditable(false);
+
+        txt_material.setEditable(false);
+
+        txt_made_in.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Btn_ItemDes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Vsn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Catgory, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Size, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Style, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Text3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_text3)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Text4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_Style, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txt_style))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_Size, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txt_size))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Btn_ItemDes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_Barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_barcode)
+                                    .addComponent(txt_des)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_Vsn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_Catgory, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_Catgory)
+                                    .addComponent(txt_vsn))))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_Item, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_QRcode, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -466,18 +571,32 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                             .addComponent(btn_StockNum, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Material, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Text1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_Text1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txt_text_1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_price)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_Madein, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Text2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Text3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_Text4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_Text2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_text4)
+                    .addComponent(txt_material)
+                    .addComponent(txt_color)
+                    .addComponent(txt_qr_code, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_item, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_stock_number)
+                    .addComponent(txt_part_no)
+                    .addComponent(txt_text2)
+                    .addComponent(txt_made_in, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,48 +604,81 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Item)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_QRcode)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Partno)
-                        .addGap(5, 5, 5)
-                        .addComponent(btn_StockNum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Color)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Material))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Btn_ItemDes)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Btn_ItemDes)
+                            .addComponent(txt_des, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Barcode)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Vsn)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Vsn)
+                            .addComponent(txt_vsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
-                        .addComponent(btn_Catgory)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Catgory)
+                            .addComponent(txt_Catgory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Size)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Size)
+                            .addComponent(txt_size, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Style)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Style)
+                            .addComponent(txt_style, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Price)
+                            .addComponent(txt_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Text1)
+                            .addComponent(txt_text_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Text3)
+                            .addComponent(txt_text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Madein)
+                        .addComponent(btn_Item)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Text2))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_QRcode)
+                            .addComponent(txt_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_qr_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Partno)
+                            .addComponent(txt_part_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addComponent(btn_StockNum)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Color)
+                            .addComponent(txt_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Material)
+                            .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Madein)
+                            .addComponent(txt_made_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Text2)
+                            .addComponent(txt_text2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_Text4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Price)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Text1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_Text4)
-                    .addComponent(btn_Text3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txt_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(txt_stock_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_text4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         cbo_nguoi_tao_du_lieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbo_nguoi_tao_du_lieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Thanh Dương Hiển", "Nguyễn Tấn Lộc" }));
+        cbo_nguoi_tao_du_lieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nguyễn Tấn Lộc", "Nguyễn Thanh Dương Hiển" }));
         cbo_nguoi_tao_du_lieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_nguoi_tao_du_lieuActionPerformed(evt);
@@ -545,6 +697,11 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
 
         cbo_masp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbo_masp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_masp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_maspActionPerformed(evt);
+            }
+        });
 
         txt_po.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -673,7 +830,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel15)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,11 +838,11 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btn_import)
-                        .addGap(201, 201, 201)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_run_tu_dong)))
                 .addGap(21, 21, 21))
         );
@@ -695,6 +852,241 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
 
         cbo_may.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbo_may.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ER-ZB1", "ER-ZB2", "ER-ZB3", "ER-ZB4", "ER-HDS", "ER-CLS", "IR-YMJ", "IR-HDS", " " }));
+        cbo_may.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_mayActionPerformed(evt);
+            }
+        });
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setText("Head:");
+
+        txt_head.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setText("Tạo dữ liệu theo chuỗi");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setText("Key:");
+
+        txt_key.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel20.setText("Serial:");
+
+        txt_tdl_serial.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setText("Qty:");
+
+        txt_tdlc_qty.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        btn_tdlc_run.setText("Run");
+        btn_tdlc_run.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tdlc_runActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(btn_tdlc_run)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(27, 27, 27)
+                                .addComponent(txt_tdlc_qty))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_tdl_serial))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel19))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_head)
+                                    .addComponent(txt_key, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txt_head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txt_key, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txt_tdl_serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txt_tdlc_qty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(btn_tdlc_run)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setText("Chuyển đổi dữ liệu HEX");
+
+        jLabel23.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel23.setText("Lưu ý: định dạng file theo STT |\tMã Qrcode | EPC | TID | Below QRCode  ");
+
+        btn_chuyen_do_Hex.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_chuyen_do_Hex.setText("Import");
+        btn_chuyen_do_Hex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_chuyen_do_HexActionPerformed(evt);
+            }
+        });
+
+        txt_chuen_doi_hex.setEditable(false);
+
+        btn_run_chuyen_doi_hex.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_run_chuyen_doi_hex.setText("Run");
+        btn_run_chuyen_doi_hex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_run_chuyen_doi_hexActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btn_chuyen_do_Hex)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_chuen_doi_hex, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel23)
+                    .addComponent(btn_run_chuyen_doi_hex))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel22)
+                .addGap(124, 124, 124))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_chuyen_do_Hex)
+                    .addComponent(txt_chuen_doi_hex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_run_chuyen_doi_hex)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setText("Đếm số dòng File");
+
+        btn_dsd_import.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_dsd_import.setText("Import");
+        btn_dsd_import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dsd_importActionPerformed(evt);
+            }
+        });
+
+        txt_dsd_import.setEditable(false);
+        txt_dsd_import.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        btn_dsd_run.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_dsd_run.setText("Run");
+        btn_dsd_run.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dsd_runActionPerformed(evt);
+            }
+        });
+
+        txa_dsd.setEditable(false);
+        txa_dsd.setColumns(20);
+        txa_dsd.setRows(5);
+        jScrollPane3.setViewportView(txa_dsd);
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel25.setText("Name Folder");
+
+        txt_name_folder.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(137, 137, 137))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btn_dsd_run)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel25)
+                            .addComponent(btn_dsd_import))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_dsd_import)
+                            .addComponent(txt_name_folder))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_dsd_import)
+                    .addComponent(txt_dsd_import, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(txt_name_folder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_dsd_run))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -704,32 +1096,43 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_path_fo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_path_folder, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_path_fo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_path_folder, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbo_nguoi_tao_du_lieu, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbo_may, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(241, 241, 241)
+                                        .addComponent(lbl_lable)))
+                                .addGap(238, 238, 238)))
+                        .addContainerGap(721, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(frame_Manual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_nguoi_tao_du_lieu, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbo_may, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(241, 241, 241)
-                                .addComponent(lbl_lable)))
-                        .addGap(238, 238, 238)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(6, 6, 6))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,14 +1152,21 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frame_Manual, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_path_folder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_path_fo))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(frame_Manual, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_path_folder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_path_fo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -792,18 +1202,30 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
         String tongDH = txt_tong_don.getText();
         String Po = txt_po.getText();
         String nguoiTaoDuLieu = (String) cbo_nguoi_tao_du_lieu.getSelectedItem();
+        String tenMay = (String) cbo_may.getSelectedItem();
+        if (outputPath.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập outputPath");
+            return;
+        }
+        String customerFolder = outputPath + File.separator + tkh;
+        File customerDir = new File(customerFolder);
+        if (!customerDir.exists()) {
+            customerDir.mkdirs(); // Tạo thư mục khách hàng nếu chưa tồn tại
+        }
+
+        LocalDate day = LocalDate.now();
+        String today = String.valueOf(day.getDayOfMonth())+"-" + String.valueOf(day.getMonthValue())+"-" + String.valueOf(day.getYear());
+        // Tạo thư mục con trong thư mục khách hàng
+        String dataFolder = customerFolder + File.separator + tkh +"-" + today+"-" + tongDH;
+        File dataDir = new File(dataFolder);
+        if (!dataDir.exists()) {
+            dataDir.mkdirs(); // Tạo thư mục con nếu chưa tồn tại
+        }
         
-        
-        
-        
-        
-        
-        xuLyDuLieu(upc,serial,partition,filter,qty,outputPath,He,sku);
-        xuLyXuatCheckList(tkh,msp,maLenh,tongDH,Po,nguoiTaoDuLieu,sku,qty+"",teaplatePath,outputPath);
-//        if (upc.isEmpty() || serial.equals(BigInteger.ZERO) || outputPath.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin!");
-//            return;
-//        }
+        String keycheck = "PO: " + Po + ";SKU: "  + sku + ";Khách hàng: " + tkh + ";" + "Mã sản phẩm: " + msp + ";" + "Mã Lệnh: " + maLenh +";Máy: "+ tenMay;
+
+        xuLyDuLieu(upc,serial,partition,filter,qty,dataFolder,He,sku,keycheck);
+        xuLyXuatCheckList(tkh,msp,maLenh,tongDH,Po,nguoiTaoDuLieu,sku,qty+"",teaplatePath,dataFolder);
 
 //        StringBuilder sb = new StringBuilder();
 //        Workbook workbook = new XSSFWorkbook();
@@ -833,86 +1255,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
 //            cbo_sku.setSelectedItem(sku);
 //        }
     }//GEN-LAST:event_btn_runActionPerformed
-    private void xuLyXuatCheckListNhieuFile(String tenKh,String maSP,String malenh, String tongDonHang, String Po, String nguoiTaoDuLieu,Map<String, String[]> dataSku,String teamplatePath, String outhPath){
-            try{
-                //tạo file name
-                String tenMay = (String) cbo_may.getSelectedItem();
-                String fullmaLenh = txt_ma_lenh.getText();
-                String maLenh = fullmaLenh.replace("/", "-");        
-                String sku = (String) cbo_sku.getSelectedItem();
-                String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-                String time = new SimpleDateFormat("HH-mm-ss").format(new Date());
-                String fileName = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
-                String fileNamed = "";
-                
-                Path outputPath = Paths.get(outhPath, fileName);
-                Files.copy(Paths.get(teamplatePath), outputPath);
 
-                try(FileInputStream fileInputStream = new FileInputStream(outputPath.toString());
-                    Workbook workbook = new XSSFWorkbook(fileInputStream)){
-                    Sheet sheet = workbook.getSheetAt(0);
-
-                    createRowAndCell(sheet, 0, 12, tenKh);
-                    createRowAndCell(sheet, 2, 19, maSP);
-                    createRowAndCell(sheet, 2, 11,todayDate);
-                    createRowAndCell(sheet, 3, 11,"DHH" + fullmaLenh );
-                    createRowAndCell(sheet, 3, 20, tongDonHang);
-                    createRowAndCell(sheet, 5, 9, Po);
-                    createRowAndCell(sheet, 13, 26, nguoiTaoDuLieu);
-                    createRowAndCell(sheet, 16, 8, tenMay);
-                    
-                    int rowIndexTable = 19;
-                    int cellIndexTableStt = 5;
-                    int cellIndexTableSku = 7;
-                    int cellIndexTableFileName = 16;
-                    int cellIndexTableQty = 41;
-                    
-                    for(Map.Entry<String,String[]> entry : dataSku.entrySet()){
-                        String[] values = entry.getValue();
-                        fileNamed = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
-                        createRowAndCell(sheet, rowIndexTable, cellIndexTableStt, 1+"");
-                        createRowAndCell(sheet, rowIndexTable, cellIndexTableSku, values[1]);
-                        createRowAndCell(sheet, rowIndexTable, cellIndexTableQty, values[2]);
-                        createRowAndCell(sheet, rowIndexTable, cellIndexTableFileName, fileNamed);
-                            
-                        rowIndexTable ++;
-                       
-                    }
-
-                    
-                    
-
-
-    //                System.out.println("tenKH"+tenKh);
-    //                System.out.println("maSP"+maSP);
-    //                System.out.println("tongDonHang"+tongDonHang);
-    //                System.out.println("PO"+Po);
-    //                System.out.println("NguoiTaoDuLieu"+nguoiTaoDuLieu);
-    //                System.out.println("Malenh"+malenh);
-    //                System.out.println("SKU"+Sku);
-    //                System.out.println("Qty"+Qty);
-    //                System.out.println("teamplatepath"+teamplatePath);
-    //                System.out.println("outpath"+outhPath);
-    //                System.out.println("filename"+fileName);
-
-
-                    //xuat file excel
-                    try(FileOutputStream fileOutputStream = new FileOutputStream(outputPath.toString())){
-                        workbook.write(fileOutputStream);
-                        System.out.println("Xuat file thanh cong");
-                    }
-
-                }
-            }
-            catch(Exception e){
-                System.err.println("Đã xảy ra lỗi: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    
-    
-    
-    
     private void xuLyXuatCheckList(String tenKh,String maSP,String malenh, String tongDonHang, String Po, String nguoiTaoDuLieu,String Sku,String Qty, String teamplatePath, String outhPath){
         try{
             //tạo file name
@@ -922,8 +1265,8 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
             String sku = (String) cbo_sku.getSelectedItem();
             String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             String time = new SimpleDateFormat("HH-mm-ss").format(new Date());
-            String fileName = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
-            
+            String fileName = "Check List _ " + tenMay + "_" + maLenh + "_" + todayDate + "_" + time + ".xlsx";
+            String fileNamed = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
             Path outputPath = Paths.get(outhPath, fileName);
             Files.copy(Paths.get(teamplatePath), outputPath);
             
@@ -941,21 +1284,8 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                 createRowAndCell(sheet, 16, 8, tenMay);
                 createRowAndCell(sheet, 19, 5, 1+"");
                 createRowAndCell(sheet, 19, 7, sku);
-                createRowAndCell(sheet, 19, 16, fileName);
+                createRowAndCell(sheet, 19, 16, fileNamed);
                 createRowAndCell(sheet, 19, 41, Qty);
-      
-//                System.out.println("tenKH"+tenKh);
-//                System.out.println("maSP"+maSP);
-//                System.out.println("tongDonHang"+tongDonHang);
-//                System.out.println("PO"+Po);
-//                System.out.println("NguoiTaoDuLieu"+nguoiTaoDuLieu);
-//                System.out.println("Malenh"+malenh);
-//                System.out.println("SKU"+Sku);
-//                System.out.println("Qty"+Qty);
-//                System.out.println("teamplatepath"+teamplatePath);
-//                System.out.println("outpath"+outhPath);
-//                System.out.println("filename"+fileName);
-
                 
                 //xuat file excel
                 try(FileOutputStream fileOutputStream = new FileOutputStream(outputPath.toString())){
@@ -984,37 +1314,191 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
         cell.setCellValue(value);
     }
     
-    private void xuLyDuLieu(String upc ,BigInteger serial, String partition, String filter, int qty, String outputPath, String He,String sku){
-        
+    private String xuLyRadioValue(JRadioButton radio, JTextField txt){
+        String value;
+        if(radio.isSelected()){
+            return value = txt.getText();
+        }
+        return "";
+    }
+    
+    private void xuLyDuLieu(String upc, BigInteger serial, String partition, String filter, int qty, String outputPath, String He, String sku, String keyCheck) {
         StringBuilder sb = new StringBuilder();
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Data");
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("UPC");
-        headerRow.createCell(1).setCellValue("Serial");
-        headerRow.createCell(2).setCellValue("EPC");
 
-        for (int i = 0; i < qty; i++) {
-            String epc = converUpcToEpc(formatUpc(upc), serial, He, filter, partition);
-            Row row = sheet.createRow(i+1);
-            row.createCell(0).setCellValue(upc);
-            row.createCell(1).setCellValue(serial+"");
-            row.createCell(2).setCellValue(epc);
-            serial = serial.add(BigInteger.ONE);
-            sb.append("EPC" + (i + 1) + ":" + epc).append("\n");
+        System.out.println(keyCheck);
+        
+        // Thêm các cột mặc định
+        headerRow.createCell(0).setCellValue("STT");
+        headerRow.createCell(2).setCellValue("UPC");
+        headerRow.createCell(3).setCellValue("Serial");
+        headerRow.createCell(1).setCellValue("EPC");
+       
+
+        // Danh sách các label và giá trị tương ứng
+        Map<String, String> additionalData = new LinkedHashMap<>();
+        additionalData.put(Btn_ItemDes.getText(), xuLyRadioValue(Btn_ItemDes, txt_des));
+        additionalData.put(btn_Barcode.getText(), xuLyRadioValue(btn_Barcode, txt_barcode));
+        additionalData.put(btn_Vsn.getText(), xuLyRadioValue(btn_Vsn, txt_vsn));
+        additionalData.put(btn_Catgory.getText(), xuLyRadioValue(btn_Catgory, txt_Catgory));
+        additionalData.put(btn_Size.getText(), xuLyRadioValue(btn_Size, txt_size));
+        additionalData.put(btn_Style.getText(), xuLyRadioValue(btn_Style, txt_style));
+        additionalData.put(btn_Price.getText(), xuLyRadioValue(btn_Price, txt_price));
+        additionalData.put(btn_Text1.getText(), xuLyRadioValue(btn_Text1, txt_text_1));
+        additionalData.put(btn_Text3.getText(), xuLyRadioValue(btn_Text3, txt_text3));
+        additionalData.put(btn_Item.getText(), xuLyRadioValue(btn_Item, txt_item));
+        additionalData.put(btn_QRcode.getText(), xuLyRadioValue(btn_QRcode, txt_qr_code));
+        additionalData.put(btn_Partno.getText(), xuLyRadioValue(btn_Partno, txt_part_no));
+        additionalData.put(btn_StockNum.getText(), xuLyRadioValue(btn_StockNum, txt_stock_number));
+        additionalData.put(btn_Color.getText(), xuLyRadioValue(btn_Color, txt_color));
+        additionalData.put(btn_Material.getText(), xuLyRadioValue(btn_Material, txt_material));
+        additionalData.put(btn_Madein.getText(), xuLyRadioValue(btn_Madein, txt_made_in));
+        additionalData.put(btn_Text2.getText(), xuLyRadioValue(btn_Text2, txt_text2));
+        additionalData.put(btn_Text4.getText(), xuLyRadioValue(btn_Text4, txt_text4));
+
+        // Thêm các cột bổ sung có dữ liệu vào header
+        int colIndex = 4; // Bắt đầu từ cột 4
+        for (Map.Entry<String, String> entry : additionalData.entrySet()) {
+            String label = entry.getKey();
+            String value = entry.getValue();
+            if (value != null && !value.isEmpty()) { // Kiểm tra nếu có dữ liệu
+                headerRow.createCell(colIndex).setCellValue(label); // Thêm tiêu đề vào Excel
+                colIndex++;
+            }
         }
 
+        int stt = 1;
+        // Thêm giá trị bổ sung cho các hàng
+        BigInteger qtyBigInt = BigInteger.valueOf(qty);
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(qtyBigInt) < 0; i = i.add(BigInteger.ONE)) {
+            String epc = converUpcToEpc(formatUpc(upc), serial, He, filter, partition);
+            Row row = sheet.createRow(i.intValue() + 1);
+            row.createCell(0).setCellValue(stt);
+            row.createCell(2).setCellValue(upc);
+            row.createCell(3).setCellValue(serial.toString());
+            row.createCell(1).setCellValue(epc);
+            stt++;
+            // Thêm các giá trị bổ sung vào hàng hiện tại
+            colIndex = 4; // Đặt lại colIndex cho hàng mới
+            for (Map.Entry<String, String> entry : additionalData.entrySet()) {
+                String value = entry.getValue();
+                if (value != null && !value.isEmpty()) {
+                    row.createCell(colIndex).setCellValue(value); // Thêm dữ liệu vào ô
+                    colIndex++;
+                }
+            }
+
+            serial = serial.add(BigInteger.ONE);
+            sb.append("EPC" + (i.intValue() + 1) + ":" + epc).append("\n");
+        }
+        headerRow.createCell(headerRow.getLastCellNum()).setCellValue(keyCheck);
         txa_hienthi.setText(sb.toString());
         writeToExcel(outputPath, workbook);
         updateCurrentSerialColumn();
         loadSkuFromData();
-      
-        
+
         if (cbo_sku.getItemCount() > 0) {
             cbo_sku.setSelectedItem(sku);
         }
-        
     }
+
+    
+    
+//    private void xuLyDuLieu(String upc ,BigInteger serial, String partition, String filter, int qty, String outputPath, String He,String sku, String... additionParam){
+//        
+//        StringBuilder sb = new StringBuilder();
+//        Workbook workbook = new XSSFWorkbook();
+//        Sheet sheet = workbook.createSheet("Data");
+//        Row headerRow = sheet.createRow(0);
+//        headerRow.createCell(0).setCellValue("UPC");
+//        headerRow.createCell(1).setCellValue("Serial");
+//        headerRow.createCell(2).setCellValue("EPC");
+//        BigInteger qtyBigInt = BigInteger.valueOf(qty);
+//        
+//
+//        
+//        String lblDes = Btn_ItemDes.getText();
+//        String valueDes = xuLyRadioValue(Btn_ItemDes,txt_des);
+//        
+//        String lblBarcode = btn_Barcode.getText();
+//        String valueBarcode = xuLyRadioValue(btn_Barcode, txt_barcode);
+//        
+//        String lblVsn= btn_Vsn.getText();
+//        String valueVsn = xuLyRadioValue(btn_Vsn, txt_vsn);
+//        
+//        String lblCat= btn_Catgory.getText();
+//        String valueCat = xuLyRadioValue(btn_Catgory, txt_Catgory);
+//        
+//        String lblsize= btn_Size.getText();
+//        String valuesize = xuLyRadioValue(btn_Size, txt_size);
+//        
+//        String lblstyle= btn_Style.getText();
+//        String valuestyle = xuLyRadioValue(btn_Style, txt_style);
+//        
+//        String lblprice= btn_Price.getText();
+//        String valueprice = xuLyRadioValue(btn_Price, txt_price);
+//        
+//        String lbltext1= btn_Text1.getText();
+//        String valuetext1 = xuLyRadioValue(btn_Text1, txt_text_1);
+//        
+//        String lbltext3= btn_Text3.getText();
+//        String valuetext3 = xuLyRadioValue(btn_Text3, txt_text3);
+//        
+//        String lblitem= btn_Item.getText();
+//        String valueitem = xuLyRadioValue(btn_Item, txt_item);
+//        
+//        String lblQrcode= btn_QRcode.getText();
+//        String valueQrcode = xuLyRadioValue(btn_QRcode, txt_qr_code);
+//        
+//        String lblpartno= btn_Partno.getText();
+//        String valuepartno = xuLyRadioValue(btn_Partno, txt_part_no);
+//        
+//        String lblstock= btn_StockNum.getText();
+//        String valuestock = xuLyRadioValue(btn_StockNum, txt_stock_number);
+//        
+//        String lblcolor= btn_Color.getText();
+//        String valuecolor = xuLyRadioValue(btn_Color, txt_color);
+//        
+//        String lblmaterial= btn_Material.getText();
+//        String valuematerial = xuLyRadioValue(btn_Material, txt_material);
+//        
+//        String lblmadein= btn_Madein.getText();
+//        String valuemadein = xuLyRadioValue(btn_Madein, txt_made_in);
+//        
+//        String lbltext2= btn_Text2.getText();
+//        String valuetext2 = xuLyRadioValue(btn_Text2, txt_text2);
+//        
+//        String lbltext4= btn_Text4.getText();
+//        String valuetext4 = xuLyRadioValue(btn_Text4, txt_text4);
+//
+//        
+//        for(int i = 0 ; i < additionParam.length; i++){
+//            headerRow.createCell(3+i).setCellValue(additionParam[i]);
+//        }
+//        
+//        for (BigInteger i = BigInteger.ZERO; i.compareTo(qtyBigInt) < 0; i = i.add(BigInteger.ONE)) {
+//            String epc = converUpcToEpc(formatUpc(upc), serial, He, filter, partition);
+//            Row row = sheet.createRow(i.intValue() + 1);
+//            row.createCell(0).setCellValue(upc);
+//            row.createCell(1).setCellValue(serial+"");
+//            row.createCell(2).setCellValue(epc);
+//            serial = serial.add(BigInteger.ONE);
+//            sb.append("EPC" + (i.intValue() + 1 + 1) + ":" + epc).append("\n");
+//        }
+//
+//        txa_hienthi.setText(sb.toString());
+//        writeToExcel(outputPath, workbook);
+//        updateCurrentSerialColumn();
+//        loadSkuFromData();
+//      
+//        
+//        if (cbo_sku.getItemCount() > 0) {
+//            cbo_sku.setSelectedItem(sku);
+//        }
+//        
+//    }
     
     private void cbo_skuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_skuActionPerformed
         // TODO add your handling code here:
@@ -1029,6 +1513,26 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
             txt_upc.setText(data[3]);
             cbo_khachhang.setSelectedItem(data[4]);
             cbo_masp.setSelectedItem(data[5]);
+            txt_des.setText(data[7]);
+            txt_barcode.setText(data[8]);
+            txt_vsn.setText(data[9]);
+            txt_Catgory.setText(data[10]);
+            txt_size.setText(data[11]);
+            txt_style.setText(data[12]);
+            txt_price.setText(data[13]);
+            txt_item.setText(data[14]);
+            txt_qr_code.setText(data[15]);
+            txt_part_no.setText(data[16]);
+            txt_stock_number.setText(data[17]);
+            txt_color.setText(data[18]);
+            txt_material.setText(data[19]);
+            txt_made_in.setText(data[20]);
+            txt_text_1.setText(data[21]);
+            txt_text2.setText(data[22]);
+            txt_text3.setText(data[23]);
+            txt_text4.setText(data[24]);
+            txt_head.setText(data[24]);
+            
         } else {
             cbo_partition.setSelectedItem("");
             cbo_filter.setSelectedItem("");
@@ -1057,7 +1561,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
             
             StringBuilder sb = new StringBuilder();
             Sheet sheet = workbook.getSheetAt(0);
-            for(int i = 1 ; i < sheet.getLastRowNum(); i++){
+            for(int i = 1 ; i <= sheet.getLastRowNum(); i++){
                 Row row = sheet.getRow(i);
                 if(row != null){
                     Cell cellStt = row.getCell(0);
@@ -1173,14 +1677,11 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
 
     private void btn_run_tu_dongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_run_tu_dongActionPerformed
         // TODO add your handling code here:
-//        printMapStructure(skuDataMap);
-
-        String upc = txt_upc.getText().trim();
-        BigInteger serial = convertStringToBigInteger(txt_serial.getText().trim());
+        String upc = "";
+        BigInteger serial;
         String partition = cbo_partition.getSelectedItem().toString();
         String filter = cbo_filter.getSelectedItem().toString();
-//        int qty = Integer.parseInt(txt_qty.getText().trim());
-        String outputPath = txt_path_folder.getText().trim();
+        String outhPath = txt_path_folder.getText().trim();
         String He = "48";
         String tkh = (String) cbo_khachhang.getSelectedItem();
         String msp = (String) cbo_masp.getSelectedItem();
@@ -1189,37 +1690,576 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
         String Po = txt_po.getText();
         String nguoiTaoDuLieu = (String) cbo_nguoi_tao_du_lieu.getSelectedItem();
 
-        String sku = "";
-        int qty = 0;
-        System.out.println("o ngoai:"+upc);
-        for (Map.Entry<String, String[]> entry : fileDataImport.entrySet()) {
-            String[] values = entry.getValue();
-            
-            sku = values[1];
-            qty = Integer.parseInt(values[2]);
-            cbo_sku.setSelectedItem(sku);
-            System.out.println("sku:" + sku);
-            System.out.println("UPC:" + upc);
-            System.out.println("Qty:" + qty);
-            txt_qty.setText(String.valueOf(qty));
-//            xuLyDuLieu(upc, serial, partition, filter, qty, outputPath, He, sku);
-//            xuLyXuatCheckListNhieuFile(tkh,msp,maLenh,tongDH,Po,nguoiTaoDuLieu,fileDataImport,teaplatePath,outputPath);
-//             System.out.println("sku:" + sku);
-//            System.out.println("qty:" + qty);
-//            System.out.println("upc:"+ upc);
-//            System.out.println("serial:"+ serial);
-//            System.out.println("partition:"+ partition);
-//            System.out.println("filter:"+ filter); 
-             
+        String customerFolder = outhPath + File.separator + tkh;
+        File customerDir = new File(customerFolder);
+        if (!customerDir.exists()) {
+            customerDir.mkdirs(); // Tạo thư mục khách hàng nếu chưa tồn tại
+        }
+
+        LocalDate day = LocalDate.now();
+        String today = String.valueOf(day.getDayOfMonth())+"-" + String.valueOf(day.getMonthValue())+"-" + String.valueOf(day.getYear());
+        // Tạo thư mục con trong thư mục khách hàng
+        String dataFolder = customerFolder + File.separator + tkh +"-" + today+"-" + tongDH;
+        File dataDir = new File(dataFolder);
+        if (!dataDir.exists()) {
+            dataDir.mkdirs(); // Tạo thư mục con nếu chưa tồn tại
         }
         
+        //tạo file name
+        String tenMay = (String) cbo_may.getSelectedItem();
+        String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String time = new SimpleDateFormat("HH-mm-ss").format(new Date());
+        String fileName = "Check List _ " + tenMay + "_" + maLenh + "_" + todayDate + "_" + time + ".xlsx";
+
+        // Lưu trữ dữ liệu vào List
+        List<Map.Entry<String, String[]>> sortedEntries = new ArrayList<>(fileDataImport.entrySet());
+
+        // Sắp xếp danh sách theo SKU (hoặc theo tiêu chí khác)
+        sortedEntries.sort((entry1, entry2) -> {
+            // Ví dụ: sắp xếp theo SKU
+            return entry1.getValue()[1].compareTo(entry2.getValue()[1]);
+        });
+
+        try {
+            Path outputPath = Paths.get(outhPath, fileName);
+            Files.copy(Paths.get(teaplatePath), outputPath, StandardCopyOption.REPLACE_EXISTING);
+
+            try (FileInputStream fileInputStream = new FileInputStream(outputPath.toString());
+                Workbook workbook = new XSSFWorkbook(fileInputStream)) {
+                Sheet sheet = workbook.getSheetAt(0);
+
+                createRowAndCell(sheet, 0, 12, tkh);
+                createRowAndCell(sheet, 2, 19, msp);
+                createRowAndCell(sheet, 2, 11, todayDate.replace("-", "/"));
+                createRowAndCell(sheet, 3, 11, "DHH" + maLenh.replace("-", "/"));
+                createRowAndCell(sheet, 3, 20, tongDH);
+                createRowAndCell(sheet, 5, 9, Po);
+                createRowAndCell(sheet, 13, 26, nguoiTaoDuLieu);
+                createRowAndCell(sheet, 16, 8, tenMay);
+
+                int rowIndexTable = 19;
+                int cellIndexTableStt = 5;
+                int cellIndexTableSku = 7;
+                int cellIndexTableFileName = 16;
+                int cellIndexTableQty = 41;
+                String sku ="" ;
+                String keycheck = "";
+
+
+                for (Map.Entry<String, String[]> entry : sortedEntries) {
+                    String[] values = entry.getValue();
+                    sku = values[1];
+                    keycheck = "PO: " + Po + ";SKU: "  + sku + ";Khách hàng: " + tkh + ";" + "Mã sản phẩm: " + msp + ";" + "Mã Lệnh: " + maLenh +";Máy: "+ tenMay;
+                    int qty = Integer.parseInt(values[2]);
+
+                    cbo_sku.setSelectedItem(sku);
+                    upc = txt_upc.getText().trim();
+                    txt_qty.setText(String.valueOf(qty));
+                    serial = convertStringToBigInteger(txt_serial.getText().trim());
+                    xuLyDuLieu(upc, serial, partition, filter, qty, dataFolder, He, sku,keycheck);
+
+                    String fileNamed = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableStt, values[0]);
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableSku, values[1]);
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableQty, values[2]);
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableFileName, fileNamed);
+
+                    rowIndexTable++;
+                }
+
+                
+                File file = new File(dataFolder, fileName);
+                // Xuất file excel
+                try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                    workbook.write(fileOutputStream);
+                    System.out.println("Xuat file thanh cong");
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Đã xảy ra lỗi: " + e.getMessage());
+            e.printStackTrace();
+        }
               
     }//GEN-LAST:event_btn_run_tu_dongActionPerformed
 
     private void cbo_nguoi_tao_du_lieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_nguoi_tao_du_lieuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_nguoi_tao_du_lieuActionPerformed
+
+    private void btn_tdlc_runActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tdlc_runActionPerformed
+        //tao check likt
+        String tkh = (String) cbo_khachhang.getSelectedItem();
+        String msp = (String) cbo_masp.getSelectedItem();
+        String maLenh = txt_ma_lenh.getText();
+        String tongDH = txt_tong_don.getText();
+        String Po = txt_po.getText();
+        String nguoiTaoDuLieu = (String) cbo_nguoi_tao_du_lieu.getSelectedItem();
+        String outputPath = txt_path_folder.getText().trim();
+        String sku = "";
+        
+        String customerFolder = outputPath + File.separator + tkh;
+        File customerDir = new File(customerFolder);
+        if (!customerDir.exists()) {
+            customerDir.mkdirs(); // Tạo thư mục khách hàng nếu chưa tồn tại
+        }
+
+        LocalDate day = LocalDate.now();
+        String today = String.valueOf(day.getDayOfMonth()) + String.valueOf(day.getMonth()) + String.valueOf(day.getYear());
+        // Tạo thư mục con trong thư mục khách hàng
+        String dataFolder = customerFolder + File.separator + tkh + today + tongDH;
+        File dataDir = new File(dataFolder);
+        if (!dataDir.exists()) {
+            dataDir.mkdirs(); // Tạo thư mục con nếu chưa tồn tại
+        }
+        
+        
+        //tao du lieu
+        String head = txt_head.getText();
+        String key = txt_key.getText();
+        String Serial = txt_tdl_serial.getText();
+        Integer qty = Integer.parseInt(txt_tdlc_qty.getText());
+
+
+        StringBuilder sb = new StringBuilder();
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Data");
+        Row headerRow = sheet.createRow(0);
+
+        String keycheck = "PO: " + Po + ";"  + "Khách hàng: " + tkh + ";" + "Mã sản phẩm: " + msp + ";" + "Mã Lệnh: " + maLenh;
+        
+        // Thêm các cột mặc định
+        headerRow.createCell(0).setCellValue("Stt");
+        headerRow.createCell(1).setCellValue("EPC");
+        headerRow.createCell(2).setCellValue(keycheck);
+
+        int stt = 1;
+        for (int i = 1 ; i <= qty; i++) {
+            String epc = head + key + Serial;
+            Integer serial = Integer.parseInt(Serial);
+            serial += 1;  
+            Serial = String.valueOf(serial);
+            
+            Row row = sheet.createRow(i);
+            row.createCell(0).setCellValue(stt);
+            row.createCell(1).setCellValue(epc);
+            stt += 1;
+        }
+
+       
+        writeToExcel(dataFolder, workbook);
+        xuLyXuatCheckList(tkh,msp,maLenh,tongDH,Po,nguoiTaoDuLieu,sku,qty+"",teaplatePath,dataFolder);
+        
+    }//GEN-LAST:event_btn_tdlc_runActionPerformed
+
+    private void cbo_mayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_mayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_mayActionPerformed
+
+    private void cbo_maspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_maspActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_maspActionPerformed
+
+    private void btn_chuyen_do_HexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chuyen_do_HexActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooserInput = new JFileChooser();
+        fileChooserInput.setDialogTitle("chọn các File Excel");
+        fileChooserInput.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooserInput.setAcceptAllFileFilterUsed(false);
+        fileChooserInput.setMultiSelectionEnabled(true);
+        fileChooserInput.setPreferredSize(new Dimension(800,600));
+        int returnValue = fileChooserInput.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File[] selectedFile = fileChooserInput.getSelectedFiles();
+            StringBuilder sb = new StringBuilder();
+            for (File file : selectedFile) {
+                sb.append(file.getAbsolutePath()).append(";");
+            }
+            txt_chuen_doi_hex.setText(sb.toString());
+        }
+    }//GEN-LAST:event_btn_chuyen_do_HexActionPerformed
+
+    private void btn_run_chuyen_doi_hexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_run_chuyen_doi_hexActionPerformed
+        // TODO add your handling code here:
+        String txtInput = txt_chuen_doi_hex.getText();
+        String txtOutput = txt_path_folder.getText();
+        String nameOfCus = (String) cbo_khachhang.getSelectedItem();
+        String hdd = txt_ma_lenh.getText();
+        String Po = txt_po.getText();
+        String tkh = (String) cbo_khachhang.getSelectedItem();
+        String msp = (String) cbo_masp.getSelectedItem();
+        String maLenh = txt_ma_lenh.getText();
+        String tenMay = (String) cbo_may.getSelectedItem();
+        String skuCoDuLieu = cbo_sku.getSelectedItem().toString();
+        String tongDH = txt_tong_don.getText();
+        String nguoiTaoDuLieu =(String) cbo_nguoi_tao_du_lieu.getSelectedItem();
+        
+        String keycheck = "PO: " + Po + ";SKU: "  + skuCoDuLieu + ";Khách hàng: " + tkh + ";" + "Mã sản phẩm: " + msp + ";" + "Mã Lệnh: " + maLenh +";Máy: "+ tenMay;
+
+        if (txtInput.isEmpty() || txtOutput.isEmpty() || nameOfCus.isEmpty() || hdd.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        File folderCus = new File(txtOutput, nameOfCus);
+        if (!folderCus.exists()) {
+            folderCus.mkdirs();
+        }
+
+        File dhhDir = new File(folderCus, hdd);
+        if (!dhhDir.exists()) {
+            dhhDir.mkdirs();
+        }
+
+        String[] inputFiles = txtInput.split(";");
+        
+        
+        for (String inputFilePath : inputFiles) {
+            File inputFile = new File(inputFilePath.trim());
+            if (!inputFile.exists()) {
+                JOptionPane.showMessageDialog(this, "File không tồn tại: " + inputFilePath, "Error", JOptionPane.ERROR_MESSAGE);
+                continue;
+            }
+
+            String extension = getFileExtension(inputFile).toLowerCase();
+            boolean processSuccess = false; 
+            
+            if (extension.equals("xlsx")) {
+                processFile(inputFile, dhhDir, hdd, keycheck);
+
+            } else if (extension.equals("csv")) {
+//                processCSVFile(inputFile, dhhDir, hdd);
+            } else {
+                JOptionPane.showMessageDialog(this, "Định dạng file không được hỗ trợ: " + extension, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            //            processFile(inputFile, dhhDir, hdd);
+//            if (processSuccess) {
+//                listNameOfFile.add(inputFile.getName());
+//            }
+        }
+
+        //---
+
+
+        //tạo file name
+        String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String time = new SimpleDateFormat("HH-mm-ss").format(new Date());
+        String fileName = "Check List _ " + tenMay + "_" + maLenh + "_" + todayDate + "_" + time + ".xlsx";
+
+        Path outputPath = Paths.get(dhhDir.getAbsolutePath(), fileName); 
+        try {
+//            Path outputPath = Paths.get(txtOutput, fileName);
+            Files.copy(Paths.get(teaplatePath), outputPath, StandardCopyOption.REPLACE_EXISTING);
+
+            try (FileInputStream fileInputStream = new FileInputStream(outputPath.toString());
+                Workbook workbook = new XSSFWorkbook(fileInputStream)) {
+                Sheet sheet = workbook.getSheetAt(0);
+
+                createRowAndCell(sheet, 0, 12, tkh);
+                createRowAndCell(sheet, 2, 19, msp);
+                createRowAndCell(sheet, 2, 11, todayDate.replace("-", "/"));
+                createRowAndCell(sheet, 3, 11, "DHH" + maLenh.replace("-", "/"));
+                createRowAndCell(sheet, 3, 20, tongDH);
+                createRowAndCell(sheet, 5, 9, Po);
+                createRowAndCell(sheet, 13, 26, nguoiTaoDuLieu);
+                createRowAndCell(sheet, 16, 8, tenMay);
+
+                int rowIndexTable = 19;
+                int cellIndexTableStt = 5;
+                int cellIndexTableSku = 7;
+                int cellIndexTableFileName = 16;
+                int cellIndexTableQty = 41;
+                String sku = (String) cbo_sku.getSelectedItem();
+
+                int stt = 1;
+                for (String nameOfFile : listNameOfFile) {
+                    
+                    String data[] = nameOfFile.split(",");
+                    String fileNamed = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableStt, String.valueOf(stt));
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableSku,sku);
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableQty,data[1] );
+                    createRowAndCell(sheet, rowIndexTable, cellIndexTableFileName, data[0]);
+                    stt++;
+                    rowIndexTable++;
+                }
+
+                // Xuất file excel
+                try (FileOutputStream fileOutputStream = new FileOutputStream(outputPath.toString())) {
+                    workbook.write(fileOutputStream);
+                    System.out.println("Xuat file thanh cong");
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Đã xảy ra lỗi: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        
+    }//GEN-LAST:event_btn_run_chuyen_doi_hexActionPerformed
+ // xy ly dem so dong begin
+    private File[] selectedFiles;
+    private List<String> listNameOfFileForDemSoLuong = new ArrayList<>();
+    private void btn_dsd_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dsd_importActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setMultiSelectionEnabled(true);
+        fileChooser.setPreferredSize(new Dimension(800,600));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFiles = fileChooser.getSelectedFiles();
+            StringBuilder sb = new StringBuilder("Selected files:\n");
+            for (File file : selectedFiles) {
+                sb.append(file.getName()).append("\n");
+            }
+            sb.append("\nTotal files: ").append(selectedFiles.length);
+            txa_dsd.setText(sb.toString());
+        }
+    }//GEN-LAST:event_btn_dsd_importActionPerformed
+
+    private void btn_dsd_runActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dsd_runActionPerformed
+        // TODO add your handling code here:
+        String outputPath1 = txt_path_folder.getText();
+        String nameFoler  = txt_name_folder.getText();
+
+        // thong tin khách hàng begin
+        String nameOfCus = (String) cbo_khachhang.getSelectedItem();
+        String hdd = txt_ma_lenh.getText();
+        String Po = txt_po.getText();
+        String tkh = (String) cbo_khachhang.getSelectedItem();
+        String msp = (String) cbo_masp.getSelectedItem();
+        String maLenh = txt_ma_lenh.getText();
+        String tenMay = (String) cbo_may.getSelectedItem();
+        String skuCoDuLieu = cbo_sku.getSelectedItem().toString();
+        String tongDH = txt_tong_don.getText();
+        String nguoiTaoDuLieu =(String) cbo_nguoi_tao_du_lieu.getSelectedItem();
+
+        // thong tin khách hàng end
+  
+        // tao folder begin
+        String keycheck = "PO: " + Po + ";SKU: "  + skuCoDuLieu + ";Khách hàng: " + tkh + ";" + "Mã sản phẩm: " + msp + ";" + "Mã Lệnh: " + maLenh +";Máy: "+ tenMay;
+
+        if ( outputPath1.isEmpty() || nameOfCus.isEmpty() || hdd.isEmpty() || nameFoler == null) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        File folderCus = new File(outputPath1, nameOfCus);
+        if (!folderCus.exists()) {
+            folderCus.mkdirs();
+        }
+
+        File dhhDir = new File(folderCus, hdd);
+        if (!dhhDir.exists()) {
+            dhhDir.mkdirs();
+        }
+        // tao folder end
+
+        // Lấy tên của file đầu tiên và file cuối cùng trong danh sách
+        String firstFileName = extractPoNumber(selectedFiles[0].getName());
+        String lastFileName = extractPoNumber(selectedFiles[selectedFiles.length - 1].getName());
+
+        // Tạo tên file output theo format mong muốn
+        String outputFileName = "Xử lý dữ liệu cho" + nameFoler + "_" +firstFileName + "_" + lastFileName + ".csv";
+        Path csvOutputPath = Paths.get(dhhDir.getAbsolutePath(), outputFileName); 
+        
+        String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String time = new SimpleDateFormat("HH-mm-ss").format(new Date());
+        String fileNameCheckList = "Check List _ " + tenMay + "_" + maLenh + "_" + todayDate + "_" + time + ".xlsx";
+
+        Path outputPath = Paths.get(dhhDir.getAbsolutePath(), fileNameCheckList); 
+        
+        
+        try (FileWriter writer = new FileWriter(csvOutputPath.toString())) {
+            writer.append("File Name, PO Number, Line Count\n");
+            for (File file : selectedFiles) {
+                String fileName = file.getName();
+                String poNumber = extractPoNumber(fileName);
+                long lineCount = Files.lines(Paths.get(file.getAbsolutePath())).count();
+                writer.append(fileName).append(", ").append(poNumber).append(", ").append(String.valueOf(lineCount)).append("\n");
+                String data = fileName + "," + lineCount;
+                listNameOfFileForDemSoLuong.add(data);
+            }
+            // xuat check list begin tạo file name 
+
+            
+            JOptionPane.showMessageDialog(this, "File đã xuất thành công: " + csvOutputPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi khi xuất file: " + e.getMessage());
+        }
+        
+        try {
+    //            Path outputPath = Paths.get(txtOutput, fileName);
+                Files.copy(Paths.get(teaplatePath), outputPath, StandardCopyOption.REPLACE_EXISTING);
+
+                try (FileInputStream fileInputStream = new FileInputStream(outputPath.toString());
+                    Workbook workbook = new XSSFWorkbook(fileInputStream)) {
+                    Sheet sheet = workbook.getSheetAt(0);
+
+                    createRowAndCell(sheet, 0, 12, tkh);
+                    createRowAndCell(sheet, 2, 19, msp);
+                    createRowAndCell(sheet, 2, 11, todayDate.replace("-", "/"));
+                    createRowAndCell(sheet, 3, 11, "DHH" + maLenh.replace("-", "/"));
+                    createRowAndCell(sheet, 3, 20, tongDH);
+                    createRowAndCell(sheet, 5, 9, Po);
+                    createRowAndCell(sheet, 13, 26, nguoiTaoDuLieu);
+                    createRowAndCell(sheet, 16, 8, tenMay);
+
+                    int rowIndexTable = 19;
+                    int cellIndexTableStt = 5;
+                    int cellIndexTableSku = 7;
+                    int cellIndexTableFileName = 16;
+                    int cellIndexTableQty = 41;
+                    String sku = (String) cbo_sku.getSelectedItem();
+
+                    int stt = 1;
+                    for (String nameOfFile : listNameOfFileForDemSoLuong) {
+
+                        String data[] = nameOfFile.split(",");
+                        String fileNamed = tenMay + "_" + maLenh + "_" + sku + "_" + todayDate + "_" + time + ".xlsx";
+                        createRowAndCell(sheet, rowIndexTable, cellIndexTableStt, String.valueOf(stt));
+                        createRowAndCell(sheet, rowIndexTable, cellIndexTableSku,sku);
+                        createRowAndCell(sheet, rowIndexTable, cellIndexTableQty,data[1] );
+                        createRowAndCell(sheet, rowIndexTable, cellIndexTableFileName, data[0]);
+                        stt++;
+                        rowIndexTable++;
+                    }
+
+                    // Xuất file excel
+                    try (FileOutputStream fileOutputStream = new FileOutputStream(outputPath.toString())) {
+                        workbook.write(fileOutputStream);
+                        System.out.println("Xuat file thanh cong");
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("Đã xảy ra lỗi: " + e.getMessage());
+                e.printStackTrace();
+            }
+            // xuat check list end
+    }//GEN-LAST:event_btn_dsd_runActionPerformed
+     private String extractPoNumber(String fileName) {
+        // Giả sử PO là chuỗi số đầu tiên trong tên file
+        String[] parts = fileName.split("_");
+        return parts[0];
+    }
+// xy ly dem so dong end
+
+// xy ly hex begin
+    private String getFileExtension(File file) {
+        String fileName = file.getName();
+        int lastIndexOfDot = fileName.lastIndexOf('.');
+        return (lastIndexOfDot == -1) ? "" : fileName.substring(lastIndexOfDot + 1);
+    }
+        
+
+    private void processFile(File inputFile, File outputDir, String hdd, String keyCheck) {
+        String fileName = inputFile.getName();
+        String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
+        String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+        String outputFileName = hdd + "_" + baseName + "." + extension;
+        String outputFilePath = new File(outputDir, outputFileName).getAbsolutePath();
+        
+        Integer qty = 0;
+        try (FileInputStream inputStream = new FileInputStream(inputFile);
+            Workbook workbook = new XSSFWorkbook(inputStream);
+            FileOutputStream outputStream = new FileOutputStream(outputFilePath)) {
+
+            Sheet sheet = workbook.getSheetAt(0);
+            int lastColumnIndex = sheet.getRow(0).getLastCellNum();
+            Row headerRow = sheet.getRow(0);
+            Cell newHeaderCell = headerRow.createCell(lastColumnIndex-1);
+            newHeaderCell.setCellValue("EPC Gốc");
+            for (Row row : sheet) {
+                if (row.getRowNum() == 0) {
+                    // Thiết lập tiêu đề cho các cột
+                    Cell headerQR = row.createCell(2);
+                    headerQR.setCellValue("QR");
+                    Cell headerEPCConvert = row.createCell(1);
+                    headerEPCConvert.setCellValue("EPC Converted");
+                    Cell headerDayKyTu = row.createCell(3);
+                    headerDayKyTu.setCellValue("Day Ky Tu");
+                    Cell headerKeyCheck = row.createCell(row.getLastCellNum());
+                    headerKeyCheck.setCellValue(keyCheck);
+                } else {
+                    Cell CellIndex2 = row.getCell(2); 
+                    Cell CellIndex1 = row.getCell(1);
+                    Cell CellIndex3 = row.getCell(3);
+                    Cell CellIndex4 = row.getCell(4);
+
+                    // Kiểm tra và khởi tạo ô nếu cần thiết
+                    if (CellIndex2 == null) CellIndex2 = row.createCell(2);
+                    if (CellIndex1 == null) CellIndex1 = row.createCell(1);
+                    if (CellIndex3 == null) CellIndex3 = row.createCell(3);
+                    if (CellIndex4 == null) CellIndex4 = row.createCell(4);
+
+//                    String epcValue ="";
+//                    String qrValue ="";
+//                    String epcConverted ="";
+//                    String dayKytuValue ="";
+//                    
+//                    if (CellIndex2.getCellType() == CellType.STRING) {
+//                        epcValue = CellIndex2.getStringCellValue();
+//                    } else if (CellIndex2.getCellType() == CellType.NUMERIC) {
+//                        epcValue = String.valueOf((int) CellIndex2.getNumericCellValue());
+//                    }
+//
+//                    // Đọc giá trị từ CellIndex1 và chuyển đổi nếu cần
+//                    if (CellIndex1.getCellType() == CellType.STRING) {
+//                        qrValue = CellIndex1.getStringCellValue();
+//                    } else if (CellIndex1.getCellType() == CellType.NUMERIC) {
+//                        qrValue = String.valueOf((int) CellIndex1.getNumericCellValue());
+//                    }
+//
+//                    if (CellIndex1.getCellType() == CellType.STRING) {
+//                        epcConverted = convertToHexadecimal(epcValue);
+//                    } else if (CellIndex1.getCellType() == CellType.NUMERIC) {
+//                        epcConverted = convertToHexadecimal(epcValue);
+//                    }
+//                    
+//                    if (CellIndex1.getCellType() == CellType.STRING) {
+//                        epcConverted = CellIndex4.getStringCellValue();
+//                    } else if (CellIndex1.getCellType() == CellType.NUMERIC) {
+//                        epcConverted = String.valueOf((int) CellIndex4.getNumericCellValue());
+//                    }
+                    
+                    String epcValue = CellIndex2.getStringCellValue();
+                    String qrValue = CellIndex1.getStringCellValue();
+                    String epcConverted = convertToHexadecimal(epcValue);
+                    System.out.println(qty);
+                    String dayKytuValue = CellIndex4.getStringCellValue();
+
+                    // Đặt giá trị cho các ô sau khi kiểm tra
+                    Cell newCell = row.createCell(lastColumnIndex - 1);
+                    newCell.setCellValue(epcValue);
+                    CellIndex2.setCellValue(qrValue);
+                    CellIndex1.setCellValue(epcConverted);
+                    CellIndex3.setCellValue(dayKytuValue);
+                    qty++;
+                }
+            }
+            String duLieuCheckList = outputFileName + "," + String.valueOf(qty);
+            listNameOfFile.add(duLieuCheckList);
+
+            workbook.write(outputStream);
+            JOptionPane.showMessageDialog(this, "Chuyển đổi thành công! File đã được lưu tại: " + outputFilePath);
+
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Không thể mở file: " + ex.getMessage() + "\nFile có thể đang được mở bởi một chương trình khác.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
+        // function convert EPC To Hexadecimal
+    private static String convertToHexadecimal(String epcValue) {
+        StringBuilder sb = new StringBuilder();
+        for (char ch : epcValue.toCharArray()) {
+            sb.append(String.format("%02X", (int) ch));
+        }
+        return sb.toString();
+    }
+    // xy ly hex end
     private void loadSkuFromData() {
         try (FileInputStream fileInputStream = new FileInputStream(new File(pathData));
             Workbook workbook = new XSSFWorkbook(fileInputStream)) {
@@ -1248,7 +2288,7 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                         cbo_sku.addItem(value);
 
                         // Lấy dữ liệu từ các dòng thứ 10, 11, 12, 14 (index 9, 10, 11, 13)
-                        String[] data = new String[7];
+                        String[] data = new String[100];
                         data[0] = getCellValue(sheet, i, 9);  // Partition
                         data[1] = getCellValue(sheet, i, 10); // Filter Current
                         data[2] = getCellValue(sheet, i, 11); // Serial
@@ -1256,6 +2296,25 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
                         data[4] = getCellValue(sheet, i, 1);  // Khách hàng
                         data[5] = getCellValue(sheet, i, 3);  // Mã sản phẩm
                         data[6] = getCellValue(sheet, i, 0);  // Lấy số thứ tự
+                        data[7] = getCellValue(sheet, i, 20); // Lấy Item Des
+                        data[8] = getCellValue(sheet, i, 15); // Lấy Barcode
+                        data[9] = getCellValue(sheet, i, 17); // Lấy Item VSN
+                        data[10] = getCellValue(sheet, i, 16); // Lấy cat
+                        data[11] = getCellValue(sheet, i, 21 ); // Lấy size
+                        data[12] = getCellValue(sheet, i, 23); // Lấy style
+                        data[13] = getCellValue(sheet, i, 25); // Lấy price
+                        data[14] = getCellValue(sheet, i, 19); // Lấy item
+                        data[15] = getCellValue(sheet, i, 14); // Lấy qr
+                        data[16] = getCellValue(sheet, i, 18); // Lấy part no
+                        data[17] = getCellValue(sheet, i, 27 ); // Lấy stock
+                        data[18] = getCellValue(sheet, i, 22); // Lấy color
+                        data[19] = getCellValue(sheet, i, 24); // Lấy material
+                        data[20] = getCellValue(sheet, i, 26); // Lấy made in
+                        data[21] = getCellValue(sheet, i, 28); // Lấy t1
+                        data[22] = getCellValue(sheet, i, 29); // Lấy t2
+                        data[23] = getCellValue(sheet, i, 30); // Lấy t3
+                        data[24] = getCellValue(sheet, i, 31); // Lấy t4
+
                         skuDataMap.put(value, data);
                     }
 
@@ -1603,10 +2662,15 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
     private javax.swing.JRadioButton btn_Text3;
     private javax.swing.JRadioButton btn_Text4;
     private javax.swing.JRadioButton btn_Vsn;
+    private javax.swing.JButton btn_chuyen_do_Hex;
+    private javax.swing.JButton btn_dsd_import;
+    private javax.swing.JButton btn_dsd_run;
     private javax.swing.JButton btn_import;
     private javax.swing.JButton btn_path_fo;
     private javax.swing.JButton btn_run;
+    private javax.swing.JButton btn_run_chuyen_doi_hex;
     private javax.swing.JButton btn_run_tu_dong;
+    private javax.swing.JButton btn_tdlc_run;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -1628,7 +2692,16 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1644,17 +2717,47 @@ public class ChuyenDoiUpc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbl_lable;
+    private javax.swing.JTextArea txa_dsd;
     private javax.swing.JTextArea txa_hienthi;
     private javax.swing.JTextArea txa_hienthitudong;
+    private javax.swing.JTextField txt_Catgory;
+    private javax.swing.JTextField txt_barcode;
+    private javax.swing.JTextField txt_chuen_doi_hex;
+    private javax.swing.JTextField txt_color;
+    private javax.swing.JTextField txt_des;
+    private javax.swing.JTextField txt_dsd_import;
+    private javax.swing.JTextField txt_head;
+    private javax.swing.JTextField txt_item;
+    private javax.swing.JTextField txt_key;
     private javax.swing.JTextField txt_ma_lenh;
+    private javax.swing.JTextField txt_made_in;
+    private javax.swing.JTextField txt_material;
+    private javax.swing.JTextField txt_name_folder;
+    private javax.swing.JTextField txt_part_no;
     private javax.swing.JTextField txt_path_folder;
     private javax.swing.JTextField txt_po;
+    private javax.swing.JTextField txt_price;
+    private javax.swing.JTextField txt_qr_code;
     private javax.swing.JTextField txt_qty;
     private javax.swing.JTextField txt_serial;
+    private javax.swing.JTextField txt_size;
+    private javax.swing.JTextField txt_stock_number;
+    private javax.swing.JTextField txt_style;
+    private javax.swing.JTextField txt_tdl_serial;
+    private javax.swing.JTextField txt_tdlc_qty;
+    private javax.swing.JTextField txt_text2;
+    private javax.swing.JTextField txt_text3;
+    private javax.swing.JTextField txt_text4;
+    private javax.swing.JTextField txt_text_1;
     private javax.swing.JTextField txt_tong_don;
     private javax.swing.JTextField txt_upc;
+    private javax.swing.JTextField txt_vsn;
     // End of variables declaration//GEN-END:variables
 }

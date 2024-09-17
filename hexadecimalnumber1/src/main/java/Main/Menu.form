@@ -24,21 +24,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      <Component id="btn_PhanCongCongViec" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btn_ChuyenDoiEpc" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_dem_sl_dong" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Component id="btn_PhanCongCongViec" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="btn_tao_du_lieu_GS1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <Component id="btn_qc" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,10 +47,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_PhanCongCongViec" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_ChuyenDoiEpc" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_dem_sl_dong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_tao_du_lieu_GS1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_qc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="319" max="32767" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,14 +64,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_PhanCongCongViecActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_ChuyenDoiEpc">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Chuy&#x1ec3;n &#x110;&#x1ed5;i Epc"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ChuyenDoiEpcActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -83,12 +72,20 @@
         <Property name="text" type="java.lang.String" value="&#x1ee8;ng d&#x1ee5;ng ph&#xf2;ng RFID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_dem_sl_dong">
+    <Component class="javax.swing.JButton" name="btn_qc">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x110;&#x1ebf;m S&#x1ed1; L&#x1b0;&#x1ee3;ng D&#xf2;ng Trong File"/>
+        <Property name="text" type="java.lang.String" value="QC"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_dem_sl_dongActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_qcActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_tao_du_lieu_GS1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="T&#x1ea1;o D&#x1eef; li&#xea;u"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tao_du_lieu_GS1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

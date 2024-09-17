@@ -71,9 +71,8 @@ public class GiaoDien extends javax.swing.JFrame {
         btn_run = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         btn_cls = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_nhanvien = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        txt_keyCheck = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -171,10 +170,19 @@ public class GiaoDien extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Key Check");
+
+        txt_keyCheck.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +193,8 @@ public class GiaoDien extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel1)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -203,12 +212,9 @@ public class GiaoDien extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_name_cus, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn_cls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(btn_cls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txt_keyCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(33, 33, 33))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(288, 288, 288)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,40 +245,14 @@ public class GiaoDien extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txt_hdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_run))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_keyCheck, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Convert EPC To EPC Hex", jPanel1);
-
-        tbl_nhanvien.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "STT", "NHÂN VIÊN", "TRẠNG THÁI", "GHI CHÚ"
-            }
-        ));
-        jScrollPane1.setViewportView(tbl_nhanvien);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 356, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Phân công công việc phòng RFID", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,38 +274,17 @@ public class GiaoDien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_browse_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_browse_inputActionPerformed
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
         // TODO add your handling code here:
-        JFileChooser fileChooserInput = new JFileChooser();
-            fileChooserInput.setDialogTitle("chọn các File Excel");
-            fileChooserInput.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooserInput.setAcceptAllFileFilterUsed(false);
-            fileChooserInput.setMultiSelectionEnabled(true);
-            fileChooserInput.setPreferredSize(new Dimension(800,600));
-            int returnValue = fileChooserInput.showOpenDialog(null);
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                File[] selectedFile = fileChooserInput.getSelectedFiles();
-                StringBuilder sb = new StringBuilder();
-                for (File file : selectedFile) {
-                    sb.append(file.getAbsolutePath()).append(";");
-                }
-                txt_input.setText(sb.toString());
-            }
-    }//GEN-LAST:event_btn_browse_inputActionPerformed
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void btn_browse_outputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_browse_outputActionPerformed
+    private void btn_clsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clsActionPerformed
         // TODO add your handling code here:
-        JFileChooser fileChooserOutput = new JFileChooser();
-            fileChooserOutput.setDialogTitle("Excel Output file");
-            fileChooserOutput.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            fileChooserOutput.setAcceptAllFileFilterUsed(false);
-            fileChooserOutput.setPreferredSize(new Dimension(800,600));
-            int returnValue = fileChooserOutput.showOpenDialog(null);
-            if(returnValue == JFileChooser.APPROVE_OPTION){
-                File selectedFile = fileChooserOutput.getSelectedFile();
-                txt_output.setText(selectedFile.getAbsolutePath());
-            }
-    }//GEN-LAST:event_btn_browse_outputActionPerformed
+        txt_input.setText("");
+        txt_output.setText("");
+        txt_hdd.setText("");
+        txt_name_cus.setText("");
+    }//GEN-LAST:event_btn_clsActionPerformed
 
     private void btn_runActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_runActionPerformed
         // TODO add your handling code here:
@@ -341,25 +300,25 @@ public class GiaoDien extends javax.swing.JFrame {
 
         File folderCus = new File(txtOutput, nameOfCus);
         if (!folderCus.exists()) {
-            folderCus.mkdirs(); 
+            folderCus.mkdirs();
         }
 
         File dhhDir = new File(folderCus, hdd);
         if (!dhhDir.exists()) {
             dhhDir.mkdirs();
-        }    
+        }
 
         String[] inputFiles = txtInput.split(";");
- 
+
         for (String inputFilePath : inputFiles) {
             File inputFile = new File(inputFilePath.trim());
             if (!inputFile.exists()) {
                 JOptionPane.showMessageDialog(this, "File không tồn tại: " + inputFilePath, "Error", JOptionPane.ERROR_MESSAGE);
                 continue;
             }
-            
+
             String extension = getFileExtension(inputFile).toLowerCase();
-                
+
             if (extension.equals("xlsx")) {
                 processFile(inputFile, dhhDir, hdd);
             } else if (extension.equals("csv")) {
@@ -367,67 +326,56 @@ public class GiaoDien extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Định dạng file không được hỗ trợ: " + extension, "Error", JOptionPane.ERROR_MESSAGE);
             }
-//            processFile(inputFile, dhhDir, hdd);        
-        }       
+            //            processFile(inputFile, dhhDir, hdd);
+        }
     }//GEN-LAST:event_btn_runActionPerformed
+
+    private void btn_browse_outputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_browse_outputActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooserOutput = new JFileChooser();
+        fileChooserOutput.setDialogTitle("Excel Output file");
+        fileChooserOutput.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooserOutput.setAcceptAllFileFilterUsed(false);
+        fileChooserOutput.setPreferredSize(new Dimension(800,600));
+        int returnValue = fileChooserOutput.showOpenDialog(null);
+        if(returnValue == JFileChooser.APPROVE_OPTION){
+            File selectedFile = fileChooserOutput.getSelectedFile();
+            txt_output.setText(selectedFile.getAbsolutePath());
+        }
+    }//GEN-LAST:event_btn_browse_outputActionPerformed
+
+    private void txt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_inputActionPerformed
+
+    private void btn_browse_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_browse_inputActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooserInput = new JFileChooser();
+        fileChooserInput.setDialogTitle("chọn các File Excel");
+        fileChooserInput.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooserInput.setAcceptAllFileFilterUsed(false);
+        fileChooserInput.setMultiSelectionEnabled(true);
+        fileChooserInput.setPreferredSize(new Dimension(800,600));
+        int returnValue = fileChooserInput.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File[] selectedFile = fileChooserInput.getSelectedFiles();
+            StringBuilder sb = new StringBuilder();
+            for (File file : selectedFile) {
+                sb.append(file.getAbsolutePath()).append(";");
+            }
+            txt_input.setText(sb.toString());
+        }
+    }//GEN-LAST:event_btn_browse_inputActionPerformed
 
     private String getFileExtension(File file) {
         String fileName = file.getName();
         int lastIndexOfDot = fileName.lastIndexOf('.');
         return (lastIndexOfDot == -1) ? "" : fileName.substring(lastIndexOfDot + 1);
     }
-    
-    private void txt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_inputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_inputActionPerformed
-
-    private void btn_clsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clsActionPerformed
-        // TODO add your handling code here:
-        txt_input.setText("");
-        txt_output.setText("");
-        txt_hdd.setText("");
-        txt_name_cus.setText("");
-    }//GEN-LAST:event_btn_clsActionPerformed
-
-    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        // TODO add your handling code here:
-        if(jPanel2.isShowing()){
-            System.out.println("123");
-        }
-    }//GEN-LAST:event_jTabbedPane1StateChanged
-    
-    private void showdata(){
-        String[] dataNhanVien = {
-            "Văn Hồng,,"    ,
-            "Tấn Phát,,"    ,
-            "Dương Hiển,,"  ,
-            "Văn Sơn,,"     ,
-            "Trung Tình,,"  ,
-            "Duyên Anh,,"   ,
-            "Tú Kiều,,"     ,
-            "Trúc Linh,,"   ,
-            "Huỳnh Nga,,"   ,
-            "Văn Tài,,"     ,
-            "Quốc Thái,,"   ,
-            "Tấn Lộc,,"     ,
-        };
         
-        String[] columnNames = {"STT", "Tên Nhân Viên", "Trạng Thái", "Ghi Chú"};
-        Object[][] tableData = new Object[dataNhanVien.length][4];
-        for (int i = 0; i < dataNhanVien.length; i++) {
-            tableData[i][0] = i + 1; // STT
-            tableData[i][1] = dataNhanVien[i]; // Tên Nhân Viên
-            tableData[i][2] = ""; // Trạng Thái (để trống)
-            tableData[i][3] = ""; // Ghi Chú (để trống)
-        }
-        DefaultTableModel model = new DefaultTableModel(tableData, columnNames);
-        for (String nhanVien : dataNhanVien) {
-            
-        }
 
-    }
-    
     private void processFile(File inputFile, File outputDir, String hdd) {
+        String keyCheck = txt_keyCheck.getText();
         String fileName = inputFile.getName();
         String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
         String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
@@ -441,15 +389,43 @@ public class GiaoDien extends javax.swing.JFrame {
             Sheet sheet = workbook.getSheetAt(0);
             int lastColumnIndex = sheet.getRow(0).getLastCellNum();
             Row headerRow = sheet.getRow(0);
-            Cell newHeaderCell = headerRow.createCell(lastColumnIndex);
-            newHeaderCell.setCellValue("EPC Converted");
+            Cell newHeaderCell = headerRow.createCell(lastColumnIndex-1);
+            newHeaderCell.setCellValue("EPC Gốc");
             for (Row row : sheet) {
-                if (row.getRowNum() == 0) continue;
-                Cell epcCell = row.getCell(2); 
-                String epcValue = epcCell.getStringCellValue();
-                String epcConverted = convertToHexadecimal(epcValue);
-                Cell newCell = row.createCell(lastColumnIndex);
-                newCell.setCellValue(epcConverted);
+                if (row.getRowNum() == 0) {
+                    // Thiết lập tiêu đề cho các cột
+                    Cell headerQR = row.createCell(2);
+                    headerQR.setCellValue("QR");
+                    Cell headerEPCConvert = row.createCell(1);
+                    headerEPCConvert.setCellValue("EPC Converted");
+                    Cell headerDayKyTu = row.createCell(3);
+                    headerDayKyTu.setCellValue("Day Ky Tu");
+                    Cell headerKeyCheck = row.createCell(row.getLastCellNum());
+                    headerKeyCheck.setCellValue(keyCheck);
+                } else {
+                    Cell CellIndex2 = row.getCell(2); 
+                    Cell CellIndex1 = row.getCell(1);
+                    Cell CellIndex3 = row.getCell(3);
+                    Cell CellIndex4 = row.getCell(4);
+
+                    // Kiểm tra và khởi tạo ô nếu cần thiết
+                    if (CellIndex2 == null) CellIndex2 = row.createCell(2);
+                    if (CellIndex1 == null) CellIndex1 = row.createCell(1);
+                    if (CellIndex3 == null) CellIndex3 = row.createCell(3);
+                    if (CellIndex4 == null) CellIndex4 = row.createCell(4);
+
+                    String epcValue = CellIndex2.getStringCellValue();
+                    String qrValue = CellIndex1.getStringCellValue();
+                    String epcConverted = convertToHexadecimal(epcValue);
+                    String dayKytuValue = CellIndex4.getStringCellValue();
+
+                    // Đặt giá trị cho các ô sau khi kiểm tra
+                    Cell newCell = row.createCell(lastColumnIndex - 1);
+                    newCell.setCellValue(epcValue);
+                    CellIndex2.setCellValue(qrValue);
+                    CellIndex1.setCellValue(epcConverted);
+                    CellIndex3.setCellValue(dayKytuValue);
+                }
             }
 
             workbook.write(outputStream);
@@ -462,6 +438,8 @@ public class GiaoDien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+
        
     private void processCSVFile(File inputFile, File outputDir, String hdd) {
         String fileName = inputFile.getName();
@@ -556,13 +534,12 @@ public class GiaoDien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tbl_nhanvien;
     private javax.swing.JTextField txt_hdd;
     private javax.swing.JTextField txt_input;
+    private javax.swing.JTextField txt_keyCheck;
     private javax.swing.JTextField txt_name_cus;
     private javax.swing.JTextField txt_output;
     // End of variables declaration//GEN-END:variables

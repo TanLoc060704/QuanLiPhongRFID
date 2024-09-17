@@ -51,9 +51,9 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_PhanCongCongViec = new javax.swing.JButton();
-        btn_ChuyenDoiEpc = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btn_dem_sl_dong = new javax.swing.JButton();
+        btn_qc = new javax.swing.JButton();
+        btn_tao_du_lieu_GS1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,20 +64,20 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_ChuyenDoiEpc.setText("Chuyển Đổi Epc");
-        btn_ChuyenDoiEpc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ChuyenDoiEpcActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Ứng dụng phòng RFID");
 
-        btn_dem_sl_dong.setText("Đếm Số Lượng Dòng Trong File");
-        btn_dem_sl_dong.addActionListener(new java.awt.event.ActionListener() {
+        btn_qc.setText("QC");
+        btn_qc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_dem_sl_dongActionPerformed(evt);
+                btn_qcActionPerformed(evt);
+            }
+        });
+
+        btn_tao_du_lieu_GS1.setText("Tạo Dữ liêu");
+        btn_tao_du_lieu_GS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tao_du_lieu_GS1ActionPerformed(evt);
             }
         });
 
@@ -86,18 +86,17 @@ public class Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(btn_PhanCongCongViec)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_ChuyenDoiEpc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_dem_sl_dong)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(btn_PhanCongCongViec)
+                .addGap(34, 34, 34)
+                .addComponent(btn_tao_du_lieu_GS1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btn_qc)
+                .addGap(36, 36, 36))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +106,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_PhanCongCongViec)
-                    .addComponent(btn_ChuyenDoiEpc)
-                    .addComponent(btn_dem_sl_dong))
-                .addContainerGap(319, Short.MAX_VALUE))
+                    .addComponent(btn_tao_du_lieu_GS1)
+                    .addComponent(btn_qc))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,19 +121,19 @@ public class Menu extends javax.swing.JFrame {
         phanCong.setVisible(true);
     }//GEN-LAST:event_btn_PhanCongCongViecActionPerformed
 
-    private void btn_ChuyenDoiEpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChuyenDoiEpcActionPerformed
+    private void btn_qcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_qcActionPerformed
         // TODO add your handling code here:
-        GiaoDien giaodien = new GiaoDien();
-        giaodien.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        giaodien.setVisible(true);
-    }//GEN-LAST:event_btn_ChuyenDoiEpcActionPerformed
+        QC ac = new QC();
+        ac.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ac.setVisible(true);
+    }//GEN-LAST:event_btn_qcActionPerformed
 
-    private void btn_dem_sl_dongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dem_sl_dongActionPerformed
+    private void btn_tao_du_lieu_GS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tao_du_lieu_GS1ActionPerformed
         // TODO add your handling code here:
-        DemSoDongCuaDonHang demsldh = new DemSoDongCuaDonHang();
-        demsldh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        demsldh.setVisible(true);
-    }//GEN-LAST:event_btn_dem_sl_dongActionPerformed
+        ChuyenDoiUpc chuyenDoiUPC = new ChuyenDoiUpc();
+        chuyenDoiUPC.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        chuyenDoiUPC.setVisible(true);
+    }//GEN-LAST:event_btn_tao_du_lieu_GS1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +181,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ChuyenDoiEpc;
     private javax.swing.JButton btn_PhanCongCongViec;
-    private javax.swing.JButton btn_dem_sl_dong;
+    private javax.swing.JButton btn_qc;
+    private javax.swing.JButton btn_tao_du_lieu_GS1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
